@@ -50,6 +50,19 @@ interface nsIProxyInfo : nsISupports
   readonly attribute unsigned long resolveFlags;
 
   /**
+   * In case of SOCKS proxy, allows to specify a username and password
+   * to pass to the proxy.
+   * They can, for some special usecases like Tor, vary per connection.
+   * This must be specified before the connection is established.
+   */
+  attribute ACString username;
+
+  /**
+   * @see username
+   */
+  attribute ACString password;
+
+  /**
    * This attribute specifies the failover timeout in seconds for this proxy.
    * If a nsIProxyInfo is reported as failed via nsIProtocolProxyService::
    * getFailoverForProxy, then the failed proxy will not be used again for this

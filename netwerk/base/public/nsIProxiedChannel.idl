@@ -19,9 +19,8 @@ interface nsIProxiedChannel : nsISupports
    * Gets the proxy info the channel was constructed with. null or a
    * proxyInfo with type "direct" mean no proxy.
    *
-   * The returned proxy info must not be modified.
+   * SOCKS username and password may be modified
+   * before the connection is established.
    */
   readonly attribute nsIProxyInfo proxyInfo;
 };
-
-

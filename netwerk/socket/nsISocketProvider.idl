@@ -5,6 +5,7 @@
 
 #include "nsISupports.idl"
 
+interface nsIProxyInfo;
 [ptr] native PRFileDescStar(struct PRFileDesc);
 
 /**
@@ -38,8 +39,7 @@ interface nsISocketProvider : nsISupports
     void newSocket(in long            aFamily,
                    in string          aHost, 
                    in long            aPort,
-                   in string          aProxyHost,
-                   in long            aProxyPort,
+                   in nsIProxyInfo    aProxy,
                    in unsigned long   aFlags,
                    out PRFileDescStar aFileDesc, 
                    out nsISupports    aSecurityInfo);
@@ -58,8 +58,7 @@ interface nsISocketProvider : nsISupports
     void addToSocket(in long           aFamily,
                      in string         aHost, 
                      in long           aPort,
-                     in string         aProxyHost,
-                     in long           aProxyPort,
+                     in nsIProxyInfo   aProxy,
                      in unsigned long  aFlags,
                      in PRFileDescStar aFileDesc, 
                      out nsISupports   aSecurityInfo);
