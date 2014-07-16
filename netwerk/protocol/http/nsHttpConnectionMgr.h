@@ -33,9 +33,9 @@
 # define WTF_DEBUG
 #endif
 
-#ifdef WTF_DEBUG
-# define WTF_TEST
-#endif
+//#ifdef WTF_DEBUG
+#define WTF_TEST
+//#endif
 
 class nsHttpPipeline;
 
