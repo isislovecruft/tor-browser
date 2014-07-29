@@ -6077,10 +6077,10 @@ var CanvasPermissionPromptHelper = {
     var message = getLocalizedString("canvas.siteprompt", [ uri.asciiHost ]);
 
     var mainAction = {
-      label: getLocalizedString("canvas.allow"),
-      accessKey: getLocalizedString("canvas.allowAccessKey"),
+      label: getLocalizedString("canvas.notNow"),
+      accessKey: getLocalizedString("canvas.notNowAccessKey"),
       callback: function() {
-          setCanvasPermission(uri, Ci.nsIPermissionManager.ALLOW_ACTION);
+        return null;
       }
     };
 
@@ -6091,7 +6091,14 @@ var CanvasPermissionPromptHelper = {
         callback: function() {
           setCanvasPermission(uri, Ci.nsIPermissionManager.DENY_ACTION);
         }
-      }
+      },
+      {
+        label: getLocalizedString("canvas.allow"),
+        accessKey: getLocalizedString("canvas.allowAccessKey"),
+        callback: function() {
+            setCanvasPermission(uri, Ci.nsIPermissionManager.ALLOW_ACTION);
+        }
+      }    
     ];
 
     // Since we have a process in place to perform localization for the
