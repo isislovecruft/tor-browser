@@ -1291,7 +1291,10 @@ toolbar[iconsize="small"] #webrtc-status-button {
   list-style-image: url(chrome://mozapps/skin/extensions/extensionGeneric-16.png);
 }
 
-#canvas-notification-icon,
+#canvas-notification-icon {
+  list-style-image: url(chrome://browser/skin/canvas-popup.png);
+}
+
 .indexedDB-notification-icon,
 #indexedDB-notification-icon {
   list-style-image: url(chrome://global/skin/icons/question-16.png);
