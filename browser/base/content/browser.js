@@ -6105,7 +6105,7 @@ white-space: pre-wrap";
         callback: function() {
             setCanvasPermission(uri, Ci.nsIPermissionManager.ALLOW_ACTION);
         }
-      }    
+      }
     ];
 
     // Since we have a process in place to perform localization for the
