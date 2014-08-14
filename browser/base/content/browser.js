@@ -6035,6 +6035,13 @@ var CanvasPermissionPromptHelper = {
   init:
   function CanvasPermissionPromptHelper_init() {
     Services.obs.addObserver(this, this._permissionsPrompt, false);
+
+    if (document.styleSheets && (document.styleSheets.length > 0)) try {
+      let ruleText = "panel[popupid=canvas-permissions-prompt] description {
+white-space: pre-wrap";
+      let sheet = document.styleSheets[0];
+      sheet.insertRule(ruleText, sheet.cssRules.length);
+    } catch (e) {}
   },
 
   uninit:
