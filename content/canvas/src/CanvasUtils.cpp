@@ -35,6 +35,7 @@ using namespace mozilla::gfx;
 #include "nsUnicharUtils.h"
 #include "nsPrintfCString.h"
 #include "nsIConsoleService.h"
+#include "nsJSPrincipals.h"
 
 #define TOPIC_CANVAS_PERMISSIONS_PROMPT "canvas-permissions-prompt"
 #define PERMISSION_CANVAS_EXTRACT_DATA "canvas/extractData"
@@ -43,10 +44,9 @@ namespace mozilla {
 namespace CanvasUtils {
 
 // Check site-specific permission and display prompt if appropriate.
-bool
-IsImageExtractionAllowed(nsIDocument *aDocument)
+bool IsImageExtractionAllowed(nsIDocument *aDocument, nsIPrincipal *aPrincipal)
 {
-  if (!aDocument)
+  if (!aDocument || !aPrincipal)
     return false;
 
   nsPIDOMWindow *win = aDocument->GetWindow();
@@ -87,13 +87,18 @@ IsImageExtractionAllowed(nsIDocument *aDocument)
         rv = thirdPartyUtil->IsThirdPartyURI(uri, docURI, &isThirdParty);
         NS_ENSURE_SUCCESS(rv, false);
 
+        nsCString scriptSpec;
+        ((nsJSPrincipals*)aPrincipal)->GetScriptLocation(scriptSpec);
+
         nsCString firstPartySpec;
         rv = uri->GetSpec(firstPartySpec);
         nsCString docSpec;
         docURI->GetSpec(docSpec);
         nsPrintfCString msg("On %s: blocked access to canvas image data"
-                            " from %s ",  // L10n
-                            firstPartySpec.get(), docSpec.get());
+                            " from %s, script from %s ",  // L10n
+                            firstPartySpec.get(),
+                            docSpec.get(),
+                            scriptSpec.get());
 
         nsCOMPtr<nsIConsoleService> console
                               (do_GetService(NS_CONSOLESERVICE_CONTRACTID));
