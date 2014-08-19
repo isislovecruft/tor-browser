@@ -3505,9 +3505,8 @@ CanvasRenderingContext2D::GetImageDataArray(JSContext* aCx,
   bool usePlaceholder = false;
   if (mCanvasElement) {
     nsCOMPtr<nsIDocument> ownerDoc = mCanvasElement->OwnerDoc();
-    nsCOMPtr<nsIPrincipal> principal = mCanvasElement->NodePrincipal();
     usePlaceholder = !ownerDoc ||
-      !CanvasUtils::IsImageExtractionAllowed(ownerDoc, principal);
+      !CanvasUtils::IsImageExtractionAllowed(ownerDoc, aCx);
   }
 
   if (usePlaceholder) {
