@@ -78,9 +78,10 @@ for ext in $exts; do
   requested_forced_updates="$requested_forced_updates $ext_path/$ext"
 done
 
-# start-tor-browser.desktop is self-modifying, and modifications to
-# start-tor-browser may be common in the wild.
-requested_forced_updates="$requested_forced_updates Browser/start-tor-browser.desktop Browser/start-tor-browser"
+# modifications to start-tor-browser may be common in the wild. Force a full
+# update so that incrementals don't fail for those users who insist on
+# repeatedly modify it.
+requested_forced_updates="$requested_forced_updates Browser/start-tor-browser"
 
 # TODO: it would be better to pass this as a command line option.
 directories_to_remove='TorBrowser/Data/Browser/profile.default/extensions/https-everywhere@eff.org'
