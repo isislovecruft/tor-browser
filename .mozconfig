@@ -23,5 +23,5 @@ ac_add_options --disable-webrtc
 #ac_add_options --disable-ctypes
 
 # Allow remoting to be separate from Firefox/IceWeasel
-ac_add_options --with-app-name="Tor Browser"
-ac_add_options --with-app-basename=TorBrowser
+ac_add_options --with-app-name=TorBrowser
+ac_add_options --with-app-basename="Tor Browser"
