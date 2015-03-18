@@ -36,6 +36,10 @@ ac_add_options --disable-debug
 # See above for a reason why this is currently disabled
 # ac_add_options --with-macos-private-frameworks=$CROSS_PRIVATE_FRAMEWORKS
 
+# Allow remoting to be separate from Firefox/IceWeasel
+ac_add_options --with-app-name="Tor Browser"
+ac_add_options --with-app-basename="Tor Browser"
+
 ac_add_options --enable-tor-browser-update
 ac_add_options --enable-update-packaging
 ac_add_options --enable-signmar
