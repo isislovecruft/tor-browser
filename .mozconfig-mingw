@@ -20,7 +20,6 @@ ac_add_options --enable-signmar
 ac_add_options --enable-verify-mar
 
 # Allow remoting to be separate from Firefox/IceWeasel
-ac_add_options --with-app-name=TorBrowser
 ac_add_options --with-app-basename="Tor Browser"
 
 # ICU seems still to have cross-compiling issues:
