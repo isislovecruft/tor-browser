@@ -1538,13 +1538,13 @@ IOServiceProxyCallback::OnProxyAvailable(nsICancelable *request, nsIChannel *cha
                                          nsIProxyInfo *pi, nsresult status)
 {
     // Checking proxy status for speculative connect
-    nsAutoCString type;
-    if (NS_SUCCEEDED(status) && pi &&
-        NS_SUCCEEDED(pi->GetType(type)) &&
-        !type.EqualsLiteral("direct")) {
+    //nsAutoCString type;
+    //if (NS_SUCCEEDED(status) && pi &&
+    //    NS_SUCCEEDED(pi->GetType(type)) &&
+    //    !type.EqualsLiteral("direct")) {
         // proxies dont do speculative connect
-        return NS_OK;
-    }
+    //    return NS_OK;
+    //}
 
     nsCOMPtr<nsIURI> uri;
     nsresult rv = channel->GetURI(getter_AddRefs(uri));

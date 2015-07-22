@@ -901,6 +901,8 @@ Predictor::PredictForLink(nsIURI *targetURI, nsIURI *sourceURI,
 {
   MOZ_ASSERT(NS_IsMainThread());
 
+  return;
+
   if (!mSpeculativeService) {
     return;
   }
@@ -1125,7 +1127,8 @@ Predictor::SetupPrediction(int32_t confidence, nsIURI *uri)
   if (confidence >= mPreconnectMinConfidence) {
     mPreconnects.AppendElement(uri);
   } else if (confidence >= mPreresolveMinConfidence) {
-    mPreresolves.AppendElement(uri);
+    mPreconnects.AppendElement(uri);
+    //mPreresolves.AppendElement(uri);
   }
 }
 

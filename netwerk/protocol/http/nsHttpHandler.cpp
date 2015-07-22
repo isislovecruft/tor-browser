@@ -2045,6 +2045,7 @@ nsHttpHandler::SpeculativeConnect(nsIURI *aURI,
     nsAutoCString username;
     aURI->GetUsername(username);
 
+    // XXX: This is problematic for prediction. We do want isolation here..
     // Disregarding the possiblity of an isolation key:
     nsHttpConnectionInfo *ci =
         new nsHttpConnectionInfo(host, port, EmptyCString(), username, nullptr, EmptyCString(), usingSSL);
